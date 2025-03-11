@@ -11,8 +11,8 @@ const Welcome = () => {
         <MonitorSmartphone />
         <h1 className="text-2xl font-bold text-gray-800">Ecommerce</h1>
       </div>
-      <Button asChild className='mt-6'>
-<Link href={"/products"}>Go to products</Link>
+      <Button asChild className="mt-6">
+        <Link href={'/products'}>Go to products</Link>
       </Button>
     </div>
   );
