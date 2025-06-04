@@ -20,9 +20,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children, //slot for children
+  ads, // slot for ads
 }: Readonly<{
   children: React.ReactNode;
+  ads: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -41,7 +43,11 @@ export default function RootLayout({
               <ShoppingCart />
             </div>
           </header>
-          <div className="px-20 mt-20">{children}</div>
+          <div className="px-20 mt-28">{children}</div>
+          <div className="my-10 mx-auto flex justify-center">{ads} </div>
+          <footer className="bg-black w-full h-10 text-white flex items-center justify-center">
+            <p>Footer</p>
+          </footer>
         </main>
       </body>
     </html>
