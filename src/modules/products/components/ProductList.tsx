@@ -1,14 +1,16 @@
 import React from 'react';
-import { DATA } from '../mock/products';
 import ProductItem from './ProductItem';
-function ProductList() {
+import { FullProduct } from '@/types';
+
+function productList(props: { products: FullProduct[] }) {
+  const { products } = props;
   return (
-    <div className="flex flex-wrap justify-between items-center w-full my-10">
-      {DATA.map((item) => {
-        return <ProductItem key={item.id} product={item} />;
+    <div className="flex flex-wrap justify-start items-center w-full m-10 gap-4">
+      {products.map((item) => {
+        return <ProductItem key={item.name} product={item} />;
       })}
     </div>
   );
 }
 
-export default ProductList;
+export default productList;

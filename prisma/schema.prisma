@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// generate schema
+model ProductCategory {
+  id       String            @id @default(uuid())
+  name     String            @unique
+  parent   ProductCategory?  @relation("Subcategories", fields: [parentId], references: [id])
+  parentId String?
+  children ProductCategory[] @relation("Subcategories")
+
+  products                   Product[]
+
+}
+
+
+
+model Product {
+  id           String               @id @default(uuid())
+  name         String
+  description  String?
+  price        Float?               @default(0.0)
+  quantity     Int?                 @default(0)
+  categoryId   String
+  category     ProductCategory      @relation(fields: [categoryId], references: [id])
+  likedByUsers User[]               @relation("UserLikes")
+  images       Image[]
+
+}
+
+
+model Image {
+  id        String   @id @default(uuid())
+  image     String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String    @unique
+  email         String    @unique
+  password      String
+  telNumber     String
+  role          String
+  likedProducts Product[] @relation("UserLikes")
+}

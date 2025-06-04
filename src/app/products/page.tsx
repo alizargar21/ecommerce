@@ -1,7 +1,8 @@
-import ProductListView from '@/modules/products/views/ProductListView';
+import ProductListView from '@/modules/products/View/ProductListView';
+
 import React from 'react';
 
-function page() {
+async function Products() {
   return (
     <div>
       <ProductListView />
@@ -9,4 +10,4 @@ function page() {
   );
 }
 
-export default page;
+export default Products;

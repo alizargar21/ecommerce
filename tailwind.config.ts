@@ -47,6 +47,13 @@ export default {
           '5': 'hsl(var(--chart-5))',
         },
       },
+      animation: { 'fade-in': 'fadeIn .2s ease-out' },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0, transform: 'translateY(.5rem)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
