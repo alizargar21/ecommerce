@@ -1,0 +1,15 @@
+import { pc } from '@/lib/Prisma';
+import { NextResponse } from 'next/server';
+// handle REST API routes GET,POST,...
+
+// import { NextRequest } from 'next/server';
+
+export async function GET() {
+  // get action by prisma
+  const result = await pc.product.findMany({ include: { images: true } });
+
+  return NextResponse.json({
+    data: result,
+  });
+}
+// POST / PUT / DELETE
